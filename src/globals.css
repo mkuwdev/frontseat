@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-whiteSmoke;
+    }
+}
+
+@font-face {
+    font-family: "Chillax";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: auto;
+    src: url(/fonts/Chillax-Variable.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: "ClashGrotesk";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: auto;
+    src: url(/fonts/ClashGrotesk-Variable.woff2) format("woff2");
+}
+
