@@ -1,4 +1,5 @@
 import Navbar from '@components/Shared/Navbar'
+import NavbarTest from '@components/Shared/NavbarTest'
 
 const SiteLayout = ({ children }) => {
     return (

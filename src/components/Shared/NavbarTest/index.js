@@ -62,7 +62,7 @@ const Navbar = () => {
               {/* Notification and Profile */}
               <div class="flex-1 flex justify-end ml-auto">
                 <button
-                  className="rounded-full hover:bg-gray-100 px-1"
+                  className="rounded-full hover:bg-gray-200 px-1"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -75,7 +75,7 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://data.whicdn.com/images/354500359/original.jpg"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />
                     </Menu.Button>
