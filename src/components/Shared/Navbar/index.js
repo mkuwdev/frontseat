@@ -1,73 +1,36 @@
-import { Fragment } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import NavItems from './NavItems'
+import ProfileDropdown from './ProfileDropdown'
 
-const navigation = [
-  { name: 'Home', url: '/'},
-  { name: 'Explore', url: '/explore'},
-]
-
-const dropdown = [
-  'Your Profile',
-  'Sign Out'
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import { useMoralis } from "react-moralis";
 
 const Navbar = () => {
 
-  const NavItem = ({ url, name, current, mobile }) => {
-    return (
-      <Link href={url}>
-        {mobile ? (
-          <Disclosure.Button
-            key={name}
-            as="a"
-            href={url}
-            className={classNames(
-              current ? 'bg-black text-white' : 'text-black hover:bg-gray-100',
-              'block px-3 py-2 rounded-md text-base font-medium'
-            )}
-            aria-current={current ? 'page' : undefined}
-          >
-            {name}
-          </Disclosure.Button>
-        ) : (
-          <a
-            key={name}
-            href={url}
-            className={classNames(
-              current ? 'bg-black text-white' : 'text-black hover:bg-gray-100',
-              'px-3 py-2 rounded-md text-base font-semibold font-archivo'
-            )}
-            aria-current={current ? 'page' : undefined}
-          >
-            {name}
-          </a>
-        )}
-      </Link>
-    )
-  }
+  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
-  const NavItems = ({ mobile }) => {
-    const router = useRouter()
-    return (
-      <>
-        {navigation.map((item) => (
-          <NavItem 
-            url={item.url} 
-            name={item.name} 
-            current={router.pathname == item.url} 
-            mobile={mobile}
-          />
-        ))}
-      </>
-    )
-  }
+  // const login = async () => {
+  //   if (!isAuthenticated) {
+  //     await authenticate({signingMessage: "Log in using Moralis" })
+  //       .then(function (user) {
+  //         console.log("logged in user:", user);
+  //         console.log(user.get("ethAddress"));
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //   }
+  // }
+
+  // const logOut = async () => {
+  //   await logout();
+  //   console.log("logged out");
+  // }
+
+  // TO DO:
+  // If not connected, profile picture is default
+  // If connected but wrong chain, must indicate unsupported network and prompt to change
+  // Otherwise, connected
   
   return (
     <Disclosure as="nav" className="bg-doctor">
@@ -120,30 +83,7 @@ const Navbar = () => {
                       />
                     </Menu.Button>
                   </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-xl py-1 bg-doctor ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {dropdown.map((item) => (
-                        <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
-                          >
-                            {item}
-                          </a>
-                        )}
-                      </Menu.Item>
-                      ))}
-                    </Menu.Items>
-                  </Transition>
+                  <ProfileDropdown/>
                 </Menu>
               </div>
             </div>
