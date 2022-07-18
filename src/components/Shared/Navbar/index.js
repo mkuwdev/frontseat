@@ -41,7 +41,8 @@ const Navbar = () => {
               <div className="flex-1 flex justify-start mr-auto">
                 {/* Mobile menu button*/}
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md hover:text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md hover:text-stone-800
+                   hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black">
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
                     ) : (
@@ -59,7 +60,7 @@ const Navbar = () => {
                 </div>
               </div>
               {/* Center Logo */}
-              <div className="text-3xl mx-auto font-chillax font-title hidden sm:block">
+              <div className="text-2xl mx-auto font-chillax font-title hidden sm:block">
                 FRONTSEAT
               </div>
               {/* Notification and Profile */}
