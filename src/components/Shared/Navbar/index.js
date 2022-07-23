@@ -79,7 +79,7 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-6 w-6 object-cover rounded-full"
-                        src="https://data.whicdn.com/images/354500359/original.jpg"
+                        src="https://img.okezone.com/content/2022/01/14/54/2532215/raup-miliaran-rupiah-dari-foto-selfie-di-nft-ghozali-buat-bantu-ibu-bayar-utang-mTcTgjWvm5.jpg"
                         alt=""
                       />
                     </Menu.Button>

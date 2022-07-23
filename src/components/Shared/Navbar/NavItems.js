@@ -26,7 +26,7 @@ const NavItem = ({ url, name, current, mobile }) => {
             as="a"
             href={url}
             className={classNames(
-              current ? 'text-black' : 'text-stone-700 hover:bg-gray-100',
+              current ? 'text-black' : 'text-stone-600 hover:bg-gray-100',
               'block px-3 py-2 rounded-md text-sm font-medium'
             )}
             aria-current={current ? 'page' : undefined}
@@ -38,7 +38,7 @@ const NavItem = ({ url, name, current, mobile }) => {
             key={name}
             href={url}
             className={classNames(
-              current ? 'text-black' : 'text-stone-700 hover:bg-gray-100',
+              current ? 'text-black' : 'text-stone-600 hover:bg-gray-100',
               'px-3 py-2 rounded-md text-sm font-semibold font-archivo'
             )}
             aria-current={current ? 'page' : undefined}
