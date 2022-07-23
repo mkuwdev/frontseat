@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useMoralisQuery } from "react-moralis";
 import { SearchIcon } from '@heroicons/react/outline'
 import ProfileCard from './ProfileCard'
 
 const Explore = () => {
+  const [creators, setCreators] = useState([])  
+
+  const { fetch } = useMoralisQuery(
+    "MembershipLaunched",
+    (query) => query.exists("confirmed"),
+    [],
+    { autoFetch: false }
+  );
+
+  useEffect(() => {
+    // setLoading(true)
+    const creatorsQuery = async () => {
+      const results = await fetch();
+      const creatorList = JSON.parse(JSON.stringify(results, ["user"]))
+      setCreators(creatorList);
+      console.log(creators);
+    };
+    creatorsQuery();
+  }, [])
 
   return (
     <div className="px-2 py-2 sm:px-6 lg:px-8">
@@ -23,10 +43,9 @@ const Explore = () => {
         </div>
         <div class="container mt-6 mb-12 mx-auto px-4 md:px-12">
           <div class="flex flex-wrap">
-            <ProfileCard />
-            <ProfileCard />
-            <ProfileCard />
-            <ProfileCard />
+            {creators.map((item) => (
+              <ProfileCard user={item.user}/>
+            ))}
           </div>
         </div>
       </div>

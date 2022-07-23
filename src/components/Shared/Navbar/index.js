@@ -1,14 +1,22 @@
+import React, { useEffect, useState } from 'react'
 import { Disclosure, Menu } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon, UserCircleIcon } from '@heroicons/react/outline'
 import NavItems from './NavItems'
 import ProfileDropdown from './ProfileDropdown'
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
+import { cidUrl } from "@utils/cidWrapper"
+import { contractAddress, contractAbi } from "@utils/contractDetails"
+import { useWeb3Contract, useMoralisQuery } from "react-moralis";
 
 import { useMoralis } from "react-moralis";
 
 const Navbar = () => {
-
-  const { Moralis, authenticate, logout } = useMoralis();
+  const [cid, setCid] = useState('')
+  const [profile, setProfile] = useState()
+  const [isLoading, setLoading] = useState(false)
+  const [profileImg, setProfileImg] = useState(null)
+  const { Moralis, authenticate } = useMoralis();
+  const { runContractFunction } = useWeb3Contract()
 
   const login = async () => {
       await authenticate({signingMessage: "Log in to FRONTSEAT" })
@@ -21,10 +29,50 @@ const Navbar = () => {
         });
   }
 
-  // TO DO:
-  // If not connected, profile picture is default
-  // If connected but wrong chain, must indicate unsupported network and prompt to change
-  // Otherwise, connected
+  async function getProfile(address) {
+      const getProfileOptions = {
+          abi: contractAbi,
+          contractAddress: contractAddress,
+          functionName: "getProfile",
+          params: { _user: address }
+      }
+
+      const data = await runContractFunction({
+          params: getProfileOptions,
+          onSuccess: (data) => {
+              console.log("Success")
+              setCid(data.personalDetailCid)
+              console.log(data)
+              console.log(cid)
+          },
+          onError: (error) => {
+              console.log(error)
+          },
+      })
+
+      return data
+  }
+
+  useEffect(() => {
+      setLoading(true)
+      if (!cid) {
+          getProfile(Moralis.account)
+      } else {
+          console.log(cidUrl(cid))
+          if (!profile) {
+              fetch(cidUrl(cid))
+              .then((res) => res.json())
+              .then((data) => {
+                  setProfile(data)
+              })
+          } else {
+            setProfileImg(cidUrl(profile.profileImage))
+            setLoading(false)
+          }
+      }
+  }, [cid, profile, profileImg, isLoading])
+
+  console.log("PROFILE IMAGE", profileImg)
   
   return (
     <Disclosure as="nav" className="bg-doctor sticky top-0">
@@ -72,7 +120,8 @@ const Navbar = () => {
                     {Moralis.account
                       ? (
                         <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                          <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)} />
+                          {!isLoading && <img src={profileImg} className="h-8 w-8 rounded-full"/>}
+                          {/* {isLoading && <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>} */}
                         </Menu.Button>
                       )
                       : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>
