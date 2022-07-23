@@ -7,7 +7,6 @@ import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { cidUrl } from "@utils/cidWrapper"
 import { contractAddress, contractAbi } from "@utils/contractDetails"
 import { useWeb3Contract, useMoralisQuery } from "react-moralis";
-import LoggedOut from './loggedout'
 
 import { useMoralis } from "react-moralis";
 import Image from 'next/image'
