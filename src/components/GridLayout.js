@@ -10,15 +10,15 @@ export const ParentGrid = ({ children, className = '' }) => {
       )
 }
 
-export const GridTwelve = ({ children, className = ''}) => {
+export const GridEleven = ({ children, className = ''}) => {
   return (
-    <div className={`lg:col-span-12 md:col-span-12 col-span-12 ${className}`}>
+    <div className={`lg:col-span-11 md:col-span-24 ${className}`}>
       {children}
     </div>
   )
 }
 
-export const GridNine = ({ children, className = ''}) => {
+export const GridSeven = ({ children, className = ''}) => {
   return (
     <div className={`lg:col-span-9 md:col-span-12 col-span-12 ${className}`}>
       {children}
@@ -26,7 +26,7 @@ export const GridNine = ({ children, className = ''}) => {
   )
 }
 
-export const GridEight = ({ children, className = ''}) => {
+export const GridSix = ({ children, className = ''}) => {
     return (
       <div className={`lg:col-span-8 md:col-span-12 col-span-12 ${className}`}>
         {children}

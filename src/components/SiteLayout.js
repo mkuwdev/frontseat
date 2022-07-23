@@ -10,7 +10,7 @@ const SiteLayout = ({ children }) => {
             options={{ showSpinner: false }}
           />
           <Navbar/>
-          <div className="mx-auto max-w-7xl w-full px-2 py-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl w-full max-h-screen ">
             {children}
           </div>
       </div>
