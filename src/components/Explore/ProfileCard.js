@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useWeb3Contract, useMoralisQuery } from "react-moralis";
 import { contractAddress, contractAbi } from "@utils/contractDetails"
 import { cidUrl } from "@utils/cidWrapper"
+import Link from 'next/link'
 
 const ProfileCard = ({ user }) => {
     const [cid, setCid] = useState('')
@@ -56,6 +57,7 @@ const ProfileCard = ({ user }) => {
     return (
         <div class="p-4 w-full md:w-1/2 lg:px-4 lg:w-1/4 font-archivo">
             {profile &&
+            <Link href={`/profile/${user}`}>
             <article class="container overflow-hidden rounded-md shadow-lg pb-8 hover:cursor-pointer hover:shadow-xl">
                 <div class="h-48 lg:h-24 overflow-hidden">
                     <img class="w-full rounded-t"
@@ -85,7 +87,8 @@ const ProfileCard = ({ user }) => {
                         {profile.title}
                     </div>
                 </header>
-            </article>}
+            </article>
+            </Link>}
         </div>
   )
 }

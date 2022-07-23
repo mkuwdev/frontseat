@@ -1,16 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CreatorPost from './CreatorPost'
 import CreatorProfile from './CreatorProfile'
 import CreatorEarnings from './CreatorEarnings'
 import CreatePost from './CreatePost'
-
+import { useMoralis, useWeb3Contract } from "react-moralis";
+import { contractAddress, contractAbi } from "@utils/contractDetails"
+import { cidUrl } from "@utils/cidWrapper"
 
 const CreatorDashboard = () => {
+  const { Moralis } = useMoralis();
+  const [cid, setCid] = useState('')
+  const [profile, setProfile] = useState()
+  const { runContractFunction } = useWeb3Contract()
 
-   // What needs to be fetched (Component = props)
+  async function getProfile(address) {
+      const getProfileOptions = {
+          abi: contractAbi,
+          contractAddress: contractAddress,
+          functionName: "getProfile",
+          params: { _user: address }
+      }
 
-  // CreatorProfile = profPic
-  // CreatorPost = postPic, postTitle, postContent, postDate, profPic
+      const data = await runContractFunction({
+          params: getProfileOptions,
+          onSuccess: (data) => {
+              console.log("Success")
+              setCid(data.personalDetailCid)
+              console.log(data)
+              console.log(cid)
+          },
+          onError: (error) => {
+              console.log(error)
+          },
+      })
+
+      return data
+  }
+
+  useEffect(() => {
+      if (!cid) {
+          getProfile(Moralis.account)
+      } else {
+          console.log(cidUrl(cid))
+          if (!profile) {
+              fetch(cidUrl(cid))
+              .then((res) => res.json())
+              .then((data) => {
+                  setProfile(data)
+              })
+          }
+      }
+  }, [cid, profile])
 
   return (
     <div className="bg-stone-100"> {/* The Whole page */}

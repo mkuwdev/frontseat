@@ -1,25 +1,91 @@
 import BannerPicture from '@components/Dashboard/BannerPicture'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileInfo from './ProfileInfo'
 import TokenMinting from './TokenMinting'
 import TokenOwned from './TokenOwned'
 import TokenDoneMinting from './TokenDoneMinting'
 import TokenCreatorView from './TokenCreatorView'
+import { useRouter } from 'next/router'
+import { useMoralis } from "react-moralis";
 import ProfilePost from './ProfilePost'
+import { contractAddress, contractAbi } from "@utils/contractDetails"
+import { useWeb3Contract, useMoralisQuery } from "react-moralis";
+import { cidUrl } from "@utils/cidWrapper"
+
 
 const Profile = () => {
+
+    const { query: { id } } = useRouter()
+    const { Moralis } = useMoralis();
+
+    function strCompare(str1,str2){
+        return str1 === str2 ;
+    }
+
+    console.log("ADDY: ", id)
+    const selfProfile = strCompare(Moralis.account,id)
+    console.log("SELF?? ", selfProfile)
+
+    const [cid, setCid] = useState('')
+    const [profile, setProfile] = useState()
+    const { runContractFunction } = useWeb3Contract()
+
+    async function getProfile(address) {
+        const getProfileOptions = {
+            abi: contractAbi,
+            contractAddress: contractAddress,
+            functionName: "getProfile",
+            params: { _user: address }
+        }
+  
+        const data = await runContractFunction({
+            params: getProfileOptions,
+            onSuccess: (data) => {
+                console.log("Success")
+                setCid(data.personalDetailCid)
+                console.log(data)
+                console.log(cid)
+            },
+            onError: (error) => {
+                console.log(error)
+            },
+        })
+  
+        return data
+    }
+
+    useEffect(() => {
+        // setLoading(true)
+        if (!cid) {
+            getProfile(id)
+        } else {
+            console.log(cidUrl(cid))
+            if (!profile) {
+                fetch(cidUrl(cid))
+                .then((res) => res.json())
+                .then((data) => {
+                    setProfile(data)
+                })
+            }
+        }
+    }, [cid, profile])
+
     return (
         <div className="bg-stone-100">
             {/* Banner image */}
-            <BannerPicture
-                cBannerPic="https://assets.vogue.com/photos/623df04d60af6495ed87fc19/16:9/w_1280,c_limit/161668_01800008_ed2e463d.jpeg"
+            {profile &&
+                <BannerPicture
+                cBannerPic={cidUrl(profile.backgroundImage)}
             />
+            }
             {/* Banner content*/}
             <div className="">
                 <div className="bg-stone-900/50 flex justify-center w-full h-[360px] items-center -mt-[360px]">
                     {/* Banner content */}
                     <div className="flex flex-row space-x-32 justify-center items-center ">
                         <ProfileInfo
+                            profileAddress={id}
+                            profileInfo={profile}
                             cProfPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJDhlIp_IIVCYzDx3i7Br4y_jQX1NFMKVQ_Net4I0HWPxUGXdQ8vNjqvgHKYKYP5jL0s&usqp=CAU"
                             cDisName="Olivia Rodrigo"
                             cUsername="@oliviarodrigo"
@@ -30,7 +96,7 @@ const Profile = () => {
                             cIgLink="instagram.com/oliviarodrigo"
                             cYtLink="https://www.youtube.com/c/OliviaRodrigomusic/"
                             cTtLink="https://www.tiktok.com/@livbedumb"
-                            creatorBool="True"
+                            isSelf={selfProfile}
                         />
                         <TokenMinting
                             tokenName="Livies"

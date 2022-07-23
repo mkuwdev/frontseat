@@ -40,7 +40,7 @@ const TokenCard = () => {
                     </div>
                 </div>
                 {/* View link and divider */}
-                <Link href="/get-started">
+                <Link href="/tokencollection">
                     <div className="flex flex-row items-center content-center justify-center space-x-2 border-t-2 border-t-stone-100 pt-4 hover: cursor-pointer">
                         <p className="font-archivo text-sm font-semibold align-middle text-stone-900">View All</p>
                         <div className="">

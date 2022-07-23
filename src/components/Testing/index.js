@@ -43,6 +43,9 @@ const Explore = () => {
       <Link href="/addpostlit">
         <h1 className="mt-2 hover:cursor-pointer">lit addpost</h1>
       </Link>
+      <Link href="/profile">
+        <h1 className="mt-2 hover:cursor-pointer">profile</h1>
+      </Link>
       <ToastContainer
           position="bottom-right"
           autoClose={5000}

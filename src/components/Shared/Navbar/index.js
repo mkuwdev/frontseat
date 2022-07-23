@@ -16,7 +16,7 @@ const Navbar = () => {
   const [profile, setProfile] = useState()
   const [isLoading, setLoading] = useState(false)
   const [profileImg, setProfileImg] = useState(null)
-  const { Moralis, authenticate, isAuthenticated } = useMoralis();
+  const { Moralis, authenticate } = useMoralis();
   const { runContractFunction } = useWeb3Contract()
 
   const login = async () => {

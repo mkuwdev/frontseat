@@ -33,7 +33,7 @@ const ViewCreatorDash = ({ totalPosts, totalEarnings, tokenSold }) => {
                     </div>
                 </div>
                 {/* Get started link and divider */}
-                <Link href="/get-started">
+                <Link href="/creatordashboard">
                     <div className="flex flex-row items-center content-center justify-center space-x-2 pt-4 border-t-2 border-t-stone-100 hover: cursor-pointer">
                         <p className="font-archivo text-sm font-semibold align-middle text-stone-900">View creator dashboard</p>
                         <div className="">
