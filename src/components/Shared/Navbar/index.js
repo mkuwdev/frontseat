@@ -33,11 +33,11 @@ const Navbar = () => {
   // Otherwise, connected
   
   return (
-    <Disclosure as="nav" className="bg-doctor">
+    <Disclosure as="nav" className="bg-doctor sticky top-0 z-50">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center">
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-12">
+            <div className="relative flex h-14 items-center">
               <div className="flex-1 flex justify-start mr-auto">
                 {/* Mobile menu button*/}
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -60,7 +60,7 @@ const Navbar = () => {
                 </div>
               </div>
               {/* Center Logo */}
-              <div className="text-2xl mx-auto font-chillax font-title hidden sm:block">
+              <div className="text-xl mx-auto font-chillax font-title hidden sm:block">
                 FRONTSEAT
               </div>
               {/* Notification and Profile */}
@@ -69,17 +69,17 @@ const Navbar = () => {
                   className="rounded-full hover:bg-gray-100 px-1"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  <BellIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
-                <div className="border-l-2 ml-3 p-2 h-8 border-silverSnippet"/>
+                <div className="border-l-2 ml-3 p-2 h-6 border-silverSnippet"/>
                 {/* Profile w./ dropdown */}
                 <Menu as="div" className="relative pr-2 sm:pr-0">
                   <div>
                     <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://data.whicdn.com/images/354500359/original.jpg"
+                        className="h-6 w-6 object-cover rounded-full"
+                        src="https://img.okezone.com/content/2022/01/14/54/2532215/raup-miliaran-rupiah-dari-foto-selfie-di-nft-ghozali-buat-bantu-ibu-bayar-utang-mTcTgjWvm5.jpg"
                         alt=""
                       />
                     </Menu.Button>
