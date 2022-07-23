@@ -20,8 +20,10 @@ module.exports = {
       },
       fontWeight: {
         'title': 650
-      }
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

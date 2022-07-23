@@ -1,31 +1,25 @@
 import { Disclosure, Menu } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon, UserCircleIcon } from '@heroicons/react/outline'
 import NavItems from './NavItems'
 import ProfileDropdown from './ProfileDropdown'
+import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 
 import { useMoralis } from "react-moralis";
 
 const Navbar = () => {
 
-  const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+  const { Moralis, authenticate, logout } = useMoralis();
 
-  // const login = async () => {
-  //   if (!isAuthenticated) {
-  //     await authenticate({signingMessage: "Log in using Moralis" })
-  //       .then(function (user) {
-  //         console.log("logged in user:", user);
-  //         console.log(user.get("ethAddress"));
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
-
-  // const logOut = async () => {
-  //   await logout();
-  //   console.log("logged out");
-  // }
+  const login = async () => {
+      await authenticate({signingMessage: "Log in to FRONTSEAT" })
+        .then(function (user) {
+          console.log("logged in user:", user);
+          console.log(user.get("ethAddress"));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }
 
   // TO DO:
   // If not connected, profile picture is default
@@ -75,14 +69,14 @@ const Navbar = () => {
                 {/* Profile w./ dropdown */}
                 <Menu as="div" className="relative pr-2 sm:pr-0">
                   <div>
-                    <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                      <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://data.whicdn.com/images/354500359/original.jpg"
-                        alt=""
-                      />
-                    </Menu.Button>
+                    {Moralis.account
+                      ? (
+                        <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+                          <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)} />
+                        </Menu.Button>
+                      )
+                      : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>
+                    }
                   </div>
                   <ProfileDropdown/>
                 </Menu>

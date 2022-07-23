@@ -3,7 +3,7 @@ export const ParentGrid = ({ children, className = '' }) => {
         <div
           className={`container mx-auto max-w-screen-xl flex-grow ${className}`}
         >
-            <div className="grid grid-cols-12 lg:gap-8">
+            <div className="grid grid-cols-12 lg:gap-6">
               {children}
             </div>
         </div>
@@ -20,7 +20,7 @@ export const GridTwelve = ({ children, className = ''}) => {
 
 export const GridNine = ({ children, className = ''}) => {
   return (
-    <div className={`lg:col-span-9 md:col-span-12 col-span-12 mb-5 ${className}`}>
+    <div className={`lg:col-span-9 md:col-span-12 col-span-12 ${className}`}>
       {children}
     </div>
   )
@@ -28,7 +28,7 @@ export const GridNine = ({ children, className = ''}) => {
 
 export const GridEight = ({ children, className = ''}) => {
     return (
-      <div className={`lg:col-span-8 md:col-span-12 col-span-12 mb-5 ${className}`}>
+      <div className={`lg:col-span-8 md:col-span-12 col-span-12 ${className}`}>
         {children}
       </div>
     )
@@ -36,7 +36,7 @@ export const GridEight = ({ children, className = ''}) => {
 
 export const GridSeven = ({ children, className = '' }) => {
     return (
-      <div className={`lg:col-span-7 md:col-span-12 col-span-12 mb-5 ${className}`}>
+      <div className={`lg:col-span-7 md:col-span-12 col-span-12 ${className}`}>
         {children}
       </div>
     )
@@ -76,7 +76,7 @@ export const GridThree = ({ children, className = '' }) => {
 
 export const GridTwo = ({ children, className = '' }) => {
     return (
-      <div className={`lg:col-span-2 md:col-span-12 col-span-12 mb-5 ${className}`}>
+      <div className={`lg:col-span-2 md:col-span-12 col-span-12 ${className}`}>
         {children}
       </div>
     )
