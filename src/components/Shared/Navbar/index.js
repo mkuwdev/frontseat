@@ -120,8 +120,8 @@ const Navbar = () => {
                     {Moralis.account
                       ? (
                         <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                          {!isLoading && <img src={profileImg} className="h-8 w-8 rounded-full"/>}
-                          {/* {isLoading && <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>} */}
+                          {/* {!isLoading && <img src={profileImg} className="h-8 w-8 rounded-full"/>} */}
+                          <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>
                         </Menu.Button>
                       )
                       : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>
