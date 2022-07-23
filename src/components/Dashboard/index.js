@@ -54,13 +54,13 @@ const Dashboard = () => {
         </div>
         {/* The right section*/}
         <div className="sticky top-0 flex flex-col space-y-5 px-10 pt-6">
-          {/* If creator, load view creator dash. If user, load createmembership */}
+          {/* If creator, load view creatordash. If user, load createmembership */}
           <CreateMembership />
-          <ViewCreatorDash 
+          {/* <ViewCreatorDash 
             totalPosts="500"
             totalEarnings="5000"
             tokenSold="4345"
-          />
+          /> */}
           <NewCreatorsCard />
           {/* NewCreatorsCard will fetch props */}
         </div>

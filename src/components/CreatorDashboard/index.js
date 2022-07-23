@@ -33,7 +33,7 @@ const CreatorDashboard = () => {
               <p className="font-clashg text-lg font-semibold">Your Posts</p>
             </div>
             {/* Large invisible container for creator's post boxes */}
-            <div className="container my-2">
+            <div className="container my-2 align-middle">
               <CreatePost />
               <CreatorPost
                 postPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSol8wbdN8DpJ1zBICd61fpzJbk2KA7eBIqw&usqp=CAU"

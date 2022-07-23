@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PencilAltIcon } from '@heroicons/react/outline'
 
 
-const UserProfile = ({ uProfPic, uDisName, uWalletAdd }) => {
+const UserProfile = ({uProfPic, uDisName, uWalletAdd}) => {
   return (
     <div className="rounded-2xl bg-white">
             <Link href="/">

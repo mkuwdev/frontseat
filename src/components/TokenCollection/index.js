@@ -11,7 +11,7 @@ const TokenCollection = () => {
         uWalletAdd="0xb794f.....79268"
       />
       <div className="flex justify-center pt-8">
-        <span className="font-clashg font-semibold text-2xl">Membership token collection</span>
+        <span className="font-clashg font-semibold text-2xl text-stone-900">Membership token collection</span>
       </div>
       <div className="bg-stone-100 grid grid-cols-3 p-10 gap-6 ">
         <TokenCard
