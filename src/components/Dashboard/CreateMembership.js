@@ -4,7 +4,7 @@ import { ArrowSmRightIcon } from '@heroicons/react/outline'
 
 const CreateMembership = () => {
     return (
-        <div className="rounded-2xl bg-white -z-30">
+        <div className="rounded-2xl bg-white">
             {/* Container to control spacing of items inside */}
             <div className="flex flex-col space-y-5 p-6">
                 {/* Title and caption */}
@@ -15,7 +15,7 @@ const CreateMembership = () => {
                     </div>
                 </div>
                 {/* Get started link and divider */}
-                <Link href="/launch">
+                <Link href="/get-started">
                     <div className="flex flex-row items-center content-center justify-center space-x-2 pt-4 hover: cursor-pointer">
                         <p className="font-archivo text-sm font-semibold align-middle text-stone-900">Get started</p>
                         <div className="">
