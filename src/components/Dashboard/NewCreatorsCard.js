@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { useMoralisQuery } from "react-moralis";
+import React from 'react'
 import dynamic from 'next/dynamic';
 import Link from 'next/link'
 import { ArrowSmRightIcon } from '@heroicons/react/outline';
 import CProfPreview from './CProfPreview';
 
 const NewCreatorsCard = () => {
-
-    const [creators, setCreators] = useState([])  
-
-    const { fetch } = useMoralisQuery(
-        "MembershipLaunched",
-        (query) => query.exists("confirmed"),
-        [],
-        { autoFetch: false }
-    );
-
-    useEffect(() => {
-    const creatorsQuery = async () => {
-        const results = await fetch();
-        const creatorList = JSON.parse(JSON.stringify(results, ["user"]))
-        setCreators(creatorList);
-        console.log(creators);
-    };
-    creatorsQuery();
-    }, [])
-
     // CProfPreview will fetch props (newCProfPic, newCName, newCTitle)
     return (
         <div className="rounded-2xl bg-white">
@@ -38,7 +17,7 @@ const NewCreatorsCard = () => {
                         <p className="font-clashg text-base font-medium text-stone-900">New Creators</p>
                         {/* Invisible container to store new creator profiles and control spacing */}
                         <div className="container flex flex-col space-y-3">
-                            {/* <CProfPreview
+                            <CProfPreview
                                 newCProfPic="https://akcdn.detik.net.id/visual/2022/06/16/ryan-gosling-dalam-film-barbie-2023_169.jpeg?w=650"
                                 newCName="Ryan Gosling"
                                 newCTitle="Actor"
@@ -52,15 +31,12 @@ const NewCreatorsCard = () => {
                                 newCProfPic="https://s3.r29static.com/bin/entry/736/0,153,2000,1500/x,80/1580069/image.jpg"
                                 newCName="Leonardo Dicaprio"
                                 newCTitle="Actor"
-                            /> */}
-                            {creators.map((item) => (
-                                <CProfPreview user={item.user}/>
-                            ))}
+                            />
                         </div>
                     </div>
                 </div>
                 {/* Explore creators link and divider */}
-                <Link href="/explore">
+                <Link href="/get-started">
                     <div className="flex flex-row items-center content-center justify-center space-x-2 border-t-2 border-t-stone-100 pt-4 hover: cursor-pointer">
                         <p className="font-archivo text-sm font-semibold align-middle">Explore creators</p>
                         <div className="">

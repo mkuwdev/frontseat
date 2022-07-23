@@ -1,10 +1,7 @@
 import Navbar from '@components/Shared/Navbar'
 import NextNProgress from "nextjs-progressbar";
-import { useMoralis } from "react-moralis";
-import React, { useState, Fragment } from 'react'
 
 const SiteLayout = ({ children }) => {
-
     return (
       <div className="flex flex-col min-h-screen">
           <NextNProgress 
