@@ -291,13 +291,13 @@ export const AddPost = ({ isOpen, closeModal }) => {
                     <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <Dialog.Title
                         as="h3"
-                        className="text-2xl mb-4 font-semibold leading-6 text-stone-900"
+                        className="text-2xl mb-4 font-semibold leading-6 text-gray-900"
                     >
                         Add Post
                     </Dialog.Title>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-5">
-                            {/* <label htmlFor="nftname" className="block text-xl font-semibold text-stone-700">
+                            {/* <label htmlFor="nftname" className="block text-xl font-semibold text-gray-700">
                                 Title
                             </label> */}
                             <div className="mt-1">
@@ -305,7 +305,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                                     type="text"
                                     name="title"
                                     id="title"
-                                    className="focus:ring-stone-700 focus:border-stone-700 flex-1 block w-full rounded-md sm:text-sm border-stone-300"
+                                    className="focus:ring-black focus:border-black flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                     onChange={e => setTitle(e.target.value)}
                                     placeholder="Enter post title.."
                                 />
@@ -319,10 +319,10 @@ export const AddPost = ({ isOpen, closeModal }) => {
                                 </div>
                             </>) :
                             (<>
-                                <div className="mt-1 mb-1 py-24 flex justify-center items-center w-full border-2 border-stone-300 border-dashed rounded-md">
+                                <div className="mt-1 mb-1 py-24 flex justify-center items-center w-full border-2 border-gray-300 border-dashed rounded-md">
                                     <div className="space-y-1 text-center">
                                         <svg
-                                            className="mx-auto h-12 w-12 text-stone-400"
+                                            className="mx-auto h-12 w-12 text-gray-400"
                                             stroke="currentColor"
                                             fill="none"
                                             viewBox="0 0 48 48"
@@ -335,7 +335,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                                             strokeLinejoin="round"
                                         />
                                         </svg>
-                                        <p className="text-xs text-stone-500">PNG, JPG, GIF up to 10MB</p>
+                                        <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                     </div>
                                 </div>
                             </>)
@@ -351,7 +351,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                         </div>
                         </div>
                         <div className="mb-4">
-                            {/* <label htmlFor="content" className="block text-sm font-semibold text-stone-700">
+                            {/* <label htmlFor="content" className="block text-sm font-semibold text-gray-700">
                                 Description
                             </label> */}
                             <div className="mt-1">
@@ -359,7 +359,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                                     id="content"
                                     name="content"
                                     rows={5}
-                                    className="shadow-sm focus:ring-stone-700 focus:border-stone-700 mt-1 block w-full sm:text-sm border border-stone-300 rounded-md"
+                                    className="shadow-sm focus:ring-black focus:border-black mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                     onChange={e => setContent(e.target.value)}
                                     placeholder="Enter content here.."
                                 />
@@ -368,7 +368,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                         <div className="flex align-end">
                             <button
                                 type="submit" 
-                                className="ml-auto bg-stone-800 transition ease-in-out  hover:scale-105 text-white font-bold py-2 px-4 rounded">
+                                className="ml-auto bg-black transition ease-in-out  hover:scale-105 text-white font-bold py-2 px-4 rounded">
                                 Publish
                             </button>
                         </div>

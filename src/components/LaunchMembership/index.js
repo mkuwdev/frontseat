@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { ChevronLeftIcon, UploadIcon } from '@heroicons/react/outline'
+import { ChevronDoubleLeftIcon, UploadIcon } from '@heroicons/react/outline'
 import { ParentGrid, GridSix } from '@components/GridLayout'
 import { useWeb3Contract } from "react-moralis";
 import { contractAddress, contractAbi } from "@api/contractDetails"
@@ -123,27 +123,24 @@ const LaunchMembership = () => {
                 className="flex items-center my-8 px-4 sm:px-0"
                 onClick={() => router.back()}
             >
-                <ChevronLeftIcon className="h-4 w-4"/>
+                <ChevronDoubleLeftIcon className="h-4 w-4"/>
                 <span className="ml-1 font-medium font-clashg">Back</span>
             </button>
             <div className="px-4 sm:px-0 mb-8">
-                <h3 className="text-2xl font-semibold font-clashg leading-6 text-stone-900 text-center">
+                <h3 className="text-3xl font-semibold font-clashg leading-6 text-gray-900">
                     Launch Membership Token
                 </h3>
-                <div className="flex justify-center">
-                    <p className="mt-2 text-md font-archivo text-stone-600 max-w-2xl text-center ">
+                <p className="mt-2 text-md font-archivo text-gray-600 max-w-3xl">
                     Create a limited edition NFT collection for your fans to gain exclusive access to your content! Set royalties
-                    to gain continuous earnings from secondary sales.
+                    to gain continuous earnings from secondary sales!
                 </p>
-                </div>
-                
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="">
                     <div className="mx-auto mb-8 px-4 py-5 bg-white sm:p-6 max-w-3xl shadow rounded-md sm:overflow-hidden font-archivo">
                         <ParentGrid>
                             <GridSix>
-                            <label className="block text-xl font-semibold text-stone-700 mb-3">
+                            <label className="block text-xl font-semibold text-gray-700 mb-3">
                                 NFT Details
                             </label>
                             {nftImgDisplay ?
@@ -153,10 +150,10 @@ const LaunchMembership = () => {
                                         </div>
                                     </>) :
                                     (<>
-                                        <div className="mt-1 mb-1 flex justify-center items-center border-2 border-stone-300 border-dashed rounded-md aspect-square">
+                                        <div className="mt-1 mb-1 flex justify-center items-center border-2 border-gray-300 border-dashed rounded-md aspect-square">
                                             <div className="space-y-1 text-center">
                                                 <svg
-                                                    className="mx-auto h-12 w-12 text-stone-400"
+                                                    className="mx-auto h-12 w-12 text-gray-400"
                                                     stroke="currentColor"
                                                     fill="none"
                                                     viewBox="0 0 48 48"
@@ -169,14 +166,14 @@ const LaunchMembership = () => {
                                                     strokeLinejoin="round"
                                                 />
                                                 </svg>
-                                                <p className="text-xs text-stone-500">PNG, JPG, GIF up to 10MB</p>
+                                                <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                                             </div>
                                         </div>
                                     </>)
                                 }                                            
                                 <div className="flex">
                                     <label htmlFor="nftimg" className="ml-auto hover:cursor-pointer">
-                                        <div className="inline-flex items-center text-stone-500 hover:text-stone-900">
+                                        <div className="inline-flex items-center text-stone-500 hover:text-black">
                                             <UploadIcon className="h-4 w-4 mr-2"/>
                                             <span className="font-semibold text-sm">Upload</span>
                                         </div>
@@ -186,7 +183,7 @@ const LaunchMembership = () => {
                             </GridSix>
                             <GridSix className="pt-8">
                                 <div className="mb-4">
-                                    <label htmlFor="nftname" className="block text-sm font-semibold text-stone-700">
+                                    <label htmlFor="nftname" className="block text-sm font-semibold text-gray-700">
                                         Name
                                     </label>
                                     <div className="mt-1">
@@ -194,7 +191,7 @@ const LaunchMembership = () => {
                                             type="text"
                                             name="nftname"
                                             id="nftname"
-                                            className="focus:ring-stone-900 focus:border-stone-900 flex-1 block w-full rounded-md sm:text-sm border-stone-300"
+                                            className="focus:ring-black focus:border-black flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                             onChange={e => setNftName(e.target.value)}
                                             placeholder="Membership Name"
                                         />
@@ -203,7 +200,7 @@ const LaunchMembership = () => {
                                 <ParentGrid>
                                     <GridSix>
                                         <div className="mb-4">
-                                            <label htmlFor="tokenname" className="block text-sm font-semibold text-stone-700">
+                                            <label htmlFor="tokenname" className="block text-sm font-semibold text-gray-700">
                                                 Token Identifier
                                             </label>
                                             <div className="mt-1">
@@ -211,7 +208,7 @@ const LaunchMembership = () => {
                                                     type="text"
                                                     name="tokenname"
                                                     id="tokenname"
-                                                    className="focus:ring-stone-900 focus:border-stone-900 flex-1 block w-full rounded-md sm:text-sm border-stone-300"
+                                                    className="focus:ring-black focus:border-black flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                                     onChange={e => setTokenName(e.target.value)}
                                                     placeholder="TOKEN"
                                                 />
@@ -220,7 +217,7 @@ const LaunchMembership = () => {
                                     </GridSix>
                                     <GridSix>
                                         <div className="mb-4">
-                                            <label htmlFor="supply" className="block text-sm font-semibold text-stone-700">
+                                            <label htmlFor="supply" className="block text-sm font-semibold text-gray-700">
                                                 Supply
                                             </label>
                                             <div className="mt-1">
@@ -228,7 +225,7 @@ const LaunchMembership = () => {
                                                     type="number"
                                                     name="supply"
                                                     id="supply"
-                                                    className="focus:ring-stone-900 focus:border-stone-900 flex-1 block w-full rounded-md sm:text-sm border-stone-300"
+                                                    className="focus:ring-black focus:border-black flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                                     onChange={e => setSupply(e.target.value)}
                                                     placeholder={5000}
                                                 />
@@ -237,7 +234,7 @@ const LaunchMembership = () => {
                                     </GridSix>
                                 </ParentGrid>
                                 <div className="mb-4">
-                                    <label htmlFor="description" className="block text-sm font-semibold text-stone-700">
+                                    <label htmlFor="description" className="block text-sm font-semibold text-gray-700">
                                         Description
                                     </label>
                                     <div className="mt-1">
@@ -245,7 +242,7 @@ const LaunchMembership = () => {
                                             id="description"
                                             name="description"
                                             rows={5}
-                                            className="shadow-sm focus:ring-stone-900 focus:border-stone-900 mt-1 block w-full sm:text-sm border border-stone-300 rounded-md"
+                                            className="shadow-sm focus:ring-black focus:border-black mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                             onChange={e => setDescription(e.target.value)}
                                             placeholder="Enter description here.."
                                         />
@@ -253,18 +250,18 @@ const LaunchMembership = () => {
                                 </div>
                                 <ParentGrid>
                                     <GridSix>
-                                        <label htmlFor="price" className="block text-sm font-medium text-stone-700">
+                                        <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                                             Price (MATIC)
                                         </label>
                                         <div className="mt-1 mb-2 flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-stone-300 bg-stone-50 text-stone-500 text-sm">
+                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                                 <img src="/matic.png" className="h-3 w-3"/>
                                             </span>
                                             <input
                                                 type="number"
                                                 name="price"
                                                 id="price"
-                                                className="focus:ring-stone-900 focus:border-stone-900 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-stone-300"
+                                                className="focus:ring-black focus:border-black flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 onChange={e => setPrice(e.target.value)}
                                                 placeholder={10}
                                                 step="any"
@@ -272,18 +269,18 @@ const LaunchMembership = () => {
                                         </div>
                                     </GridSix>
                                     <GridSix>
-                                        <label htmlFor="royalty" className="block text-sm font-medium text-stone-700">
+                                        <label htmlFor="royalty" className="block text-sm font-medium text-gray-700">
                                             Royalty
                                         </label>
                                         <div className="mt-1 mb-2 flex rounded-md shadow-sm">
-                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-stone-300 bg-stone-50 text-stone-500 text-sm">
+                                            <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                                 %
                                             </span>
                                             <input
                                                 type="number"
                                                 name="royalty"
                                                 id="royalty"
-                                                className="focus:ring-stone-900 focus:border-stone-900 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-stone-300"
+                                                className="focus:ring-black focus:border-black flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 onChange={e => setRoyalty(e.target.value)}
                                                 placeholder={5}
                                                 step="any"
@@ -298,7 +295,7 @@ const LaunchMembership = () => {
                             <div className="flex align-center">
                                 <button
                                     type="submit" 
-                                    className="mx-auto bg-stone-900 transition ease-in-out  hover:scale-105 text-white font-bold py-2 px-4 rounded">
+                                    className="mx-auto bg-black transition ease-in-out  hover:scale-105 text-white font-bold py-2 px-4 rounded">
                                     Launch Membership NFT
                                 </button>
                             </div>
