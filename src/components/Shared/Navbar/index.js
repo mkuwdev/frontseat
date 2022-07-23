@@ -7,15 +7,17 @@ import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { cidUrl } from "@utils/cidWrapper"
 import { contractAddress, contractAbi } from "@utils/contractDetails"
 import { useWeb3Contract, useMoralisQuery } from "react-moralis";
+import LoggedOut from './loggedout'
 
 import { useMoralis } from "react-moralis";
+import Image from 'next/image'
 
 const Navbar = () => {
   const [cid, setCid] = useState('')
   const [profile, setProfile] = useState()
   const [isLoading, setLoading] = useState(false)
   const [profileImg, setProfileImg] = useState(null)
-  const { Moralis, authenticate } = useMoralis();
+  const { Moralis, authenticate, isAuthenticated } = useMoralis();
   const { runContractFunction } = useWeb3Contract()
 
   const login = async () => {
@@ -68,6 +70,7 @@ const Navbar = () => {
           } else {
             setProfileImg(cidUrl(profile.profileImage))
             setLoading(false)
+            console.log("loading set to false!")
           }
       }
   }, [cid, profile, profileImg, isLoading])
@@ -120,8 +123,10 @@ const Navbar = () => {
                     {Moralis.account
                       ? (
                         <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                          {/* {!isLoading && <img src={profileImg} className="h-8 w-8 rounded-full"/>} */}
-                          <Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>
+                          {profileImg ? 
+                            (<img src={profileImg} className="h-8 w-8 rounded-full"/>) :
+                            (<Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>)
+                          }
                         </Menu.Button>
                       )
                       : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>

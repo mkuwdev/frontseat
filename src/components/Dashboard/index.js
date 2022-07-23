@@ -17,7 +17,6 @@ const Dashboard = () => {
   return (
     <div className="bg-stone-100"> {/* The Whole page */}
       <div className="grid grid-cols-[7fr_11fr_6fr]"> {/* Dividing the page into three*/}
-
         {/* The Left Section */}
         <div className="sticky top-0 flex flex-col space-y-5 px-10 pt-6">
           {/* User profile box*/}
