@@ -55,7 +55,7 @@ const Dashboard = () => {
         {/* The right section*/}
         <div className="sticky top-0 flex flex-col space-y-5 px-10 pt-6">
           {/* If creator, load view creator dash. If user, load createmembership */}
-          {/* <CreateMembership /> */}
+          <CreateMembership />
           <ViewCreatorDash 
             totalPosts="500"
             totalEarnings="5000"

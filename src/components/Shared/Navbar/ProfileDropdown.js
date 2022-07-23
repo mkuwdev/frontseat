@@ -21,7 +21,7 @@ const ProfileDropdown = () => {
     }
 
   return (
-    <div>
+    <div className="z-100">
         <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
