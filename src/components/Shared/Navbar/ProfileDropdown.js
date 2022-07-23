@@ -1,10 +1,10 @@
 import React from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import { useMoralis } from "react-moralis";
 
 const dropdown = [
-    'Your Profile',
-    'Sign Out'
+    'Your Profile'
 ]
 
 function classNames(...classes) {
@@ -12,6 +12,14 @@ function classNames(...classes) {
 }
 
 const ProfileDropdown = () => {
+
+    const { logout } = useMoralis();
+
+    const logOut = async () => {
+        await logout();
+        console.log("logged out");
+    }
+
   return (
     <div>
         <Transition
@@ -25,17 +33,28 @@ const ProfileDropdown = () => {
             >
             <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-xl py-1 bg-doctor ring-1 ring-black ring-opacity-5 focus:outline-none">
                 {dropdown.map((item) => (
-                <Menu.Item>
-                {({ active }) => (
-                    <a
-                    href="#"
-                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
-                    >
-                    {item}
-                    </a>
-                )}
-                </Menu.Item>
+                    <Menu.Item>
+                    {({ active }) => (
+                        <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
+                        >
+                            {item}
+                        </a>
+                    )}
+                    </Menu.Item>
                 ))}
+                <Menu.Item>
+                    {({ active }) => (
+                        <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
+                            onClick={logOut}
+                        >
+                            Logout
+                        </a>
+                    )}
+                </Menu.Item>
             </Menu.Items>
         </Transition>
     </div>

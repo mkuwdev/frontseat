@@ -1,42 +1,61 @@
-import React, { useEffect } from 'react';
-import { useMoralis } from "react-moralis";
+import React, { useState, Fragment } from 'react'
+import Link from "next/link"
+import { Dialog, Transition } from "@headlessui/react";
+import { AddPost } from "./addPost";
 
-const Testing = () => {
-    const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-    useEffect(() => {
-    if (isAuthenticated) {
-      // add your logic here
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+const Explore = () => {
 
-    const login = async () => {
-      if (!isAuthenticated) {
+  let [isOpen, setIsOpen] = useState(false)
 
-        await authenticate({signingMessage: "Log in using Moralis" })
-          .then(function (user) {
-            console.log("logged in user:", user);
-            console.log(user.get("ethAddress"));
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
-    }
+  function closeModal() {
+    setIsOpen(false)
+  }
 
-    const logOut = async () => {
-      await logout();
-      console.log("logged out");
-    }
+  function openModal() {
+    setIsOpen(true)
+  }
 
   return (
     <div>
-      <h1>Moralis Hello World!</h1>
-      <button onClick={login}>Moralis Metamask Login</button>
-      <button onClick={logOut} disabled={isAuthenticating}>Logout</button>
+      <h1 className="text-3xl font-archivo font-semibold">
+        Explore
+      </h1>
+      <Link href="/editprofile">
+        <h1 className="mt-2 hover:cursor-pointer">Edit Profile</h1>
+      </Link>
+      <Link href="/launch">
+        <h1 className="mt-2 hover:cursor-pointer">Launch Membership</h1>
+      </Link>
+      <button
+        type="button"
+        onClick={openModal}
+        className="mt-2 rounded-md bg-black px-4 py-2 text-sm font-medium text-white"
+      >
+        Add post
+      </button>
+      <AddPost isOpen={isOpen} closeModal={closeModal}/>
+      <Link href="/lit">
+        <h1 className="mt-2 hover:cursor-pointer">lit</h1>
+      </Link>
+      <Link href="/addpostlit">
+        <h1 className="mt-2 hover:cursor-pointer">lit addpost</h1>
+      </Link>
+      <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+      />
     </div>
-  );
+  )
 }
 
-export default Testing
+export default Explore

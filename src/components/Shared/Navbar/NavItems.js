@@ -6,11 +6,7 @@ import { Disclosure } from '@headlessui/react'
 const navigation = [
     { name: 'Home', url: '/'},
     { name: 'Explore', url: '/explore'},
-]
-  
-const dropdown = [
-    'Your Profile',
-    'Sign Out'
+    { name: 'T', url: '/testing'}
 ]
 
 function classNames(...classes) {
