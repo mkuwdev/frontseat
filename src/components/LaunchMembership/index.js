@@ -117,7 +117,7 @@ const LaunchMembership = () => {
     }   
 
     return (
-        <div>
+        <div className="px-2 py-2 sm:px-6 lg:px-8">
             <button 
                 type="button" 
                 className="flex items-center my-8 px-4 sm:px-0"

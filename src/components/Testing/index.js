@@ -19,7 +19,7 @@ const Explore = () => {
   }
 
   return (
-    <div>
+    <div className="px-2 py-2 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-archivo font-semibold">
         Explore
       </h1>

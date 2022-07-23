@@ -27,7 +27,7 @@ const Navbar = () => {
   // Otherwise, connected
   
   return (
-    <Disclosure as="nav" className="bg-doctor sticky top-0 z-50">
+    <Disclosure as="nav" className="bg-doctor sticky top-0">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-12">

@@ -18,21 +18,21 @@ export const GridEleven = ({ children, className = ''}) => {
   )
 }
 
-export const GridSeven = ({ children, className = ''}) => {
-  return (
-    <div className={`lg:col-span-9 md:col-span-12 col-span-12 ${className}`}>
-      {children}
-    </div>
-  )
-}
+// export const GridSeven = ({ children, className = ''}) => {
+//   return (
+//     <div className={`lg:col-span-9 md:col-span-12 col-span-12 ${className}`}>
+//       {children}
+//     </div>
+//   )
+// }
 
-export const GridSix = ({ children, className = ''}) => {
-    return (
-      <div className={`lg:col-span-8 md:col-span-12 col-span-12 ${className}`}>
-        {children}
-      </div>
-    )
-  }
+// export const GridSix = ({ children, className = ''}) => {
+//     return (
+//       <div className={`lg:col-span-8 md:col-span-12 col-span-12 ${className}`}>
+//         {children}
+//       </div>
+//     )
+//   }
 
 export const GridSeven = ({ children, className = '' }) => {
     return (
