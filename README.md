@@ -1,34 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## FRONTSEAT
 
-## Getting Started
+Frontseat is a membership platform, a web3 version of Patreon. We make it simple for creators to generate their own membership token in the form of NFT, which they can then utilize as a gate to their exclusive community.
 
-First, run the development server:
+To establish a creator profile, a creator must first launch their membership token in the form of NFT on our platform. Creators can then create content to be posted to their profiles. These contents will be encrypted by our platform. The creator's exclusive community and locked content are only accessible to those who own the creator's membership token.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The token is digitally scarce, allowing fans to re-sell the token on secondary marketplaces to other fans who desire access to the creator’s community. A creator’s membership token can appreciate in price as the size of their audience grows. This added possibility of investment gives a tangible incentive for fans to financially support their favorite creators. We hope this will lower the barrier for fans to financially support their favorite creators.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each supporter can own a membership token of different creators. Think of social media, but the follow button is replaced with owning a membership token. Therefore, each individual can access fresh content from their favorite creators in one integrated dashboard.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Our project is still at a very early stage. In the future, we wish to add more features to make our platform more comprehensive. E.g: comment functionality for fans to comment on the creator’s posts, and messaging functionality for creators to interact with their supporters.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+You can view the contracts for Frontseat [here](https://github.com/mkuwdev/frontseat-contracts)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+🚀 Built fot HackFS'22
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
