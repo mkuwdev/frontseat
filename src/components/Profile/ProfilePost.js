@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useMoralis, useWeb3Contract, useMoralisQuery } from "react-moralis";
+import { useMoralis, useWeb3Contract } from "react-moralis";
 import LitJsSdk from 'lit-js-sdk'
 import { contractAddress, contractAbi } from "@api/contractDetails"
 import { cidUrl } from "@utils/cidWrapper"
@@ -40,9 +40,6 @@ const ProfilePost = ({ postPic, postTitle, postContent, postDate, uProfPic, cont
         const chain = 'mumbai'
 
         if (cid && key && creator) {
-            // console.log("KEY: ", key)
-            // console.log("CID: ", cid)
-            // console.log("NFT: ", nft)
 
             const creatorProfile = await getCreatorProfile(creator)
             const membershipNft = String(creatorProfile[0])
@@ -102,9 +99,6 @@ const ProfilePost = ({ postPic, postTitle, postContent, postDate, uProfPic, cont
 
     useEffect(() => {
         if (isLoading) {
-            console.log("KEY: ", postKey)
-            console.log("CID: ", contentCid)
-            console.log("NFT: ", requiredNft)
             decrypt(contentCid, postKey, creator);
         } else {
             // updateUI()

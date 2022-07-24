@@ -36,6 +36,24 @@ const CreatorEarnings = () => {
         { autoFetch: false }
     );
 
+    async function withdraw() {
+        const options = {
+            abi: nftAbi,
+            contractAddress: tokenAddress,
+            functionName: "withdraw",
+        }
+    
+        const data = await runContractFunction({
+            params: options,
+            onSuccess: (data) => {
+                console.log("Withdrawn")
+            },
+            onError: (error) => {
+                console.log(error)
+            },
+        })
+    }
+
     async function getMembership() {
         const results = await membershipQuery.fetch();
         console.log("MEMBERSHIP: ",results[0])
@@ -131,14 +149,12 @@ const CreatorEarnings = () => {
                                     <span className="font-archivo font-semibold text-base text-stone-800">{balance}</span>
                                 </div>
                                 {/* Put withdraw link inside the href */}
-                                <Link href=""> 
-                                    <button type="button" className="text-white bg-stone-800 hover:bg-black hover:shadow-lg  focus:ring-4 focus:ring-stone-300 rounded-lg px-2 py-1">
-                                        <div className="flex flex-row space-x-2 justify-end items-center hover:cursor-pointer m-1">
-                                            <p className="font-archivo font-semibold text-xs text-white">Withdraw remaining</p>
-                                            <ArrowSmRightIcon className="h-3 w-3 text-white" />
-                                        </div>
-                                    </button>
-                                </Link>
+                                <button onClick={withdraw} type="button" className="text-white bg-stone-800 hover:bg-black hover:shadow-lg  focus:ring-4 focus:ring-stone-300 rounded-lg px-2 py-1">
+                                    <div className="flex flex-row space-x-2 justify-end items-center hover:cursor-pointer m-1">
+                                        <p className="font-archivo font-semibold text-xs text-white">Withdraw remaining</p>
+                                        <ArrowSmRightIcon className="h-3 w-3 text-white" />
+                                    </div>
+                                </button>
                             </div>
                         </div>
                         }

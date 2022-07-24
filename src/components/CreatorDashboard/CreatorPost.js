@@ -1,21 +1,126 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useMoralis, useWeb3Contract } from "react-moralis";
+import LitJsSdk from 'lit-js-sdk'
+import { contractAddress, contractAbi } from "@api/contractDetails"
+import { cidUrl } from "@utils/cidWrapper"
+import { formatDate } from "@utils/dateFormatter"
 
-const CreatorPost = ({ postPic, postTitle, postContent, postDate, profPic }) => {
+const CreatorPost = ({ postPic, postTitle, postContent, postDate, profPic, contentCid, postKey, creator, time, requiredNft }) => {
+    const [isLoading, setLoading] = useState(true)
+    const [title, setTitle] = useState()
+    const [image, setImage] = useState()
+    const [content, setContent] = useState()
+    const [date, setDate] = useState()
+
+    const { Moralis, isWeb3Enabled } = useMoralis();
+    const { runContractFunction } = useWeb3Contract()
+
+    async function getCreatorProfile(address) {
+
+        const getCreatorProfileOptions = {
+            abi: contractAbi,
+            contractAddress: contractAddress,
+            functionName: "getCreatorProfile",
+            params: { _creator: address }
+        }
+  
+        const data = await runContractFunction({
+            params: getCreatorProfileOptions,
+            onSuccess: (data) => {
+                console.log("Success")
+            },
+            onError: (error) => {
+                console.log(error)
+            },
+        })
+  
+        return data
+    }
+
+    async function decrypt(cid, key, creator) {
+        const client = new LitJsSdk.LitNodeClient()
+        const chain = 'mumbai'
+
+        if (cid && key && creator) {
+
+            const creatorProfile = await getCreatorProfile(creator)
+            const membershipNft = String(creatorProfile[0])
+            console.log("Membership NFT", membershipNft)
+
+            const accessControlConditions = [
+                {
+                contractAddress: membershipNft,
+                standardContractType: 'ERC721',
+                chain,
+                method: 'balanceOf',
+                parameters: [
+                    ':userAddress'
+                ],
+                returnValueTest: {
+                    comparator: '>',
+                    value: '0'
+                }
+                }
+            ]
+    
+            if (!client.litNodeClient) {
+                await client.connect()
+            }
+    
+            const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+            const symmetricKey = await client.getEncryptionKey({
+                accessControlConditions,
+                toDecrypt: key,
+                chain,
+                authSig
+            })
+    
+            const URL = "https://" + cid + ".ipfs.dweb.link/"
+            console.log("Fetching Blob")
+            const res = await fetch(URL)
+            const encryptedBlob = await res.blob()
+            // console.log(encryptedBlob)
+            console.log("Fetched Blob Success")
+            
+            console.log("Feeding into decryptor..")
+            const decryptedString = await LitJsSdk.decryptString(
+                encryptedBlob,
+                symmetricKey
+            );
+        
+            const decrypted = JSON.parse(decryptedString)
+            setTitle(decrypted.title)
+            setImage(cidUrl(decrypted.image))
+            setContent(decrypted.content)
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        if (isLoading) {
+            // const data = new Date(unixTime*1000);
+            // setDate(data.toLocaleDateString("en-US"))
+            decrypt(contentCid, postKey, creator);
+        } else {
+            // updateUI()
+       }
+    }, [])
+
     return (
         <div className="mx-12 mb-4 rounded-2xl bg-white">
             {/* Container inside the box of creator's post*/}
             <div className="flex flex-col space-y-5 p-7">
                 {/* Post's picture and texts*/}
                 <div className="flex flex-col space-y-4 justify-self-end">
-                    <img className="object-contain" src={postPic} />
+                    <img className="object-contain" src={image} />
                     <div className="flex flex-col space-y-2">
-                        <p className="font-clashg text-base font-medium text-stone-900">{postTitle}</p>
-                        <p className="font-archivo text-sm font-normal text-stone-700">{postContent}</p>
+                        <p className="font-clashg text-base font-medium text-stone-900">{title}</p>
+                        <p className="font-archivo text-sm font-normal text-stone-700">{content}</p>
                     </div>
                 </div>
                 {/* Date and divider*/}
                 <div className="border-b-2 pb-2  border-stone-100">
-                    <p className="font-archivo text-xs font-semibold uppercase text-stone-900">{postDate}</p>
+                    <p className="font-archivo text-xs font-semibold uppercase text-stone-900">{}</p>
                 </div>
                 {/* Comment section*/}
                 <div className="div">

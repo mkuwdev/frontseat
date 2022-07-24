@@ -104,7 +104,8 @@ const Profile = () => {
                             tokenRemaining="4600"
                             tokenSupply="5000"
                             tokenPrice="200"
-                            mintLink="opensea.com" />
+                            mintLink="opensea.com"
+                            selfProfile={selfProfile} />
                         {/* <TokenOwned
                             tokenName="Livies"
                             tokenPic="https://i.pinimg.com/564x/b2/a9/e2/b2a9e25600d0e4862aecdc263db8fa50.jpg"
