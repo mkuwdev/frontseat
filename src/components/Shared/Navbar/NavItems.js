@@ -6,7 +6,6 @@ import { Disclosure } from '@headlessui/react'
 const navigation = [
     { name: 'Home', url: '/'},
     { name: 'Explore', url: '/explore'},
-    { name: 'T', url: '/testing'}
 ]
 
 function classNames(...classes) {
