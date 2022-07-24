@@ -30,6 +30,7 @@
     "react-jazzicon": "^1.0.4",
     "react-moralis": "^1.4.0",
     "react-toastify": "^9.0.7",
+    "web3": "^1.7.4",
     "web3.storage": "^4.3.0",
     "web3uikit": "^0.1.170"
   },

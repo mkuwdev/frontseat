@@ -14,9 +14,9 @@ import Image from 'next/image'
 const Navbar = () => {
   const [cid, setCid] = useState('')
   const [profile, setProfile] = useState()
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
   const [profileImg, setProfileImg] = useState(null)
-  const { Moralis, authenticate } = useMoralis();
+  const { Moralis, authenticate, isAuthenticated } = useMoralis();
   const { runContractFunction } = useWeb3Contract()
 
   const login = async () => {
@@ -119,13 +119,11 @@ const Navbar = () => {
                 {/* Profile w./ dropdown */}
                 <Menu as="div" className="relative pr-2 sm:pr-0">
                   <div>
-                    {Moralis.account
+                    {(isAuthenticated && Moralis.account)
                       ? (
                         <Menu.Button className="bg-doctor flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                          {profileImg ? 
-                            (<img src={profileImg} className="h-8 w-8 rounded-full"/>) :
-                            (<Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>)
-                          }
+                          {(profileImg) && (<img src={profileImg} className="h-8 w-8 rounded-full"/>)}
+                          {(isLoading) &&  (<Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>)}
                         </Menu.Button>
                       )
                       : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>

@@ -25,8 +25,8 @@ const CreatorProfile = ({ profPic, disName }) => {
           onSuccess: (data) => {
               console.log("Success")
               setCid(data.personalDetailCid)
-              console.log(data)
-              console.log(cid)
+              // console.log(data)
+              // console.log(cid)
           },
           onError: (error) => {
               console.log(error)
@@ -40,7 +40,7 @@ const CreatorProfile = ({ profPic, disName }) => {
       if (!cid) {
           getProfile(Moralis.account)
       } else {
-          console.log(cidUrl(cid))
+          // console.log(cidUrl(cid))
           if (!profile) {
               fetch(cidUrl(cid))
               .then((res) => res.json())
