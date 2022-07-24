@@ -125,7 +125,7 @@ const ProfilePost = ({ postPic, postTitle, postContent, postDate, uProfPic, cont
                 {/* Comment section*/}
                 <div className="div">
                     <div className="flex flex-row items-center justify-start space-x-3">
-                        <img className="object-cover h-6 w-6 rounded-full" src={uProfPic} alt="" />
+                        <img className="object-cover h-6 w-6 rounded-full" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="" />
                         <div className="box-content flex h-7 flex-auto rounded-lg bg-stone-100">
                             <label for="comments"></label>
                             <input type="text" className="form-control font-archivo flex flex-auto rounded-lg bg-stone-100 bg-clip-padding px-4 py-1 text-xs font-normal text-stone-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none" id="comments" placeholder="Comments (disabled)" aria-label="Comments" disabled />
