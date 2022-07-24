@@ -77,11 +77,11 @@ const Navbar = () => {
   console.log("PROFILE IMAGE", profileImg)
   
   return (
-    <Disclosure as="nav" className="bg-doctor sticky top-0">
+    <Disclosure as="nav" className="bg-doctor sticky top-0 z-30">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-12">
-            <div className="relative flex h-14 items-center">
+            <div className="relative flex h-16 items-center">
               <div className="flex-1 flex justify-start mr-auto">
                 {/* Mobile menu button*/}
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -108,12 +108,12 @@ const Navbar = () => {
                 FRONTSEAT
               </div>
               {/* Notification and Profile */}
-              <div className="flex-1 flex justify-end ml-auto">
+              <div className="flex-1 flex justify-end items-center ml-auto">
                 <button
                   className="rounded-full hover:bg-gray-100 px-1"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-5 w-5" aria-hidden="true" />
+                  <BellIcon className="h-6 w-6 text-stone-800" aria-hidden="true" />
                 </button>
                 <div className="border-l-2 ml-3 p-2 h-6 border-silverSnippet"/>
                 {/* Profile w./ dropdown */}
@@ -126,7 +126,7 @@ const Navbar = () => {
                           {(isLoading) &&  (<Jazzicon diameter={32} seed={jsNumberForAddress(Moralis.account)}/>)}
                         </Menu.Button>
                       )
-                      : <UserCircleIcon className="h-8 w-8 hover:cursor-pointer" onClick={login}/>
+                      : <UserCircleIcon className="h-8 w-8 text-stone-800 hover:cursor-pointer" onClick={login}/>
                     }
                   </div>
                   <ProfileDropdown/>
