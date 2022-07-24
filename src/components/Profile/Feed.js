@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
 import { useMoralis, useMoralisQuery, useMoralisWeb3Api } from "react-moralis";
 import ProfilePost from './ProfilePost'
+import { LockClosedIcon } from '@heroicons/react/outline';
 
 const Feed = () => {
     const [membership, setMembership] = useState()
@@ -72,8 +73,9 @@ const Feed = () => {
   return (
     <div>
         {(access === 0) &&
-        <div className="flex flex-col space-y-2 px-[352px] py-8">
-            <h1>You do not have access</h1>
+        <div className="flex flex-col space-y-4 px-[352px] py-12 justify-center items-center" >
+            <LockClosedIcon className="h-12 w-12 text-stone-600"/>
+            <h1 className="font-clashg font-semibold text-xl text-center text-stone-600">You do not have access</h1>
         </div>}
         {(access === 1) && feed &&
         <div className="flex flex-col space-y-2 px-[352px] py-8">
