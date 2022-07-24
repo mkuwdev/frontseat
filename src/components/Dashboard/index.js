@@ -92,11 +92,11 @@ const Dashboard = () => {
             <div className="container my-2">
               <FeedPost
                 cProfPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJDhlIp_IIVCYzDx3i7Br4y_jQX1NFMKVQ_Net4I0HWPxUGXdQ8vNjqvgHKYKYP5jL0s&usqp=CAU"
-                cDisName="Olivia Rodrigo"
-                cUsername="@oliviarodrigo"
-                postPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSol8wbdN8DpJ1zBICd61fpzJbk2KA7eBIqw&usqp=CAU"
-                postTitle="This is the title"
-                postContent="This is the content"
+                cDisName="Michelle"
+                cUsername="@michelle"
+                postPic="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+                postTitle="Helloo"
+                postContent="Thankful for every single one of you!!"
                 postDate="May 5, 2022"
                 uProfPic="https://img.okezone.com/content/2022/01/14/54/2532215/raup-miliaran-rupiah-dari-foto-selfie-di-nft-ghozali-buat-bantu-ibu-bayar-utang-mTcTgjWvm5.jpg"
               />
