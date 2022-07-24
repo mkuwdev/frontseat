@@ -2,10 +2,16 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useMoralis } from "react-moralis";
+import Link from 'next/link'
+
+// const dropdown = [
+//     'Your Profile'
+// ]
 
 const dropdown = [
-    'Your Profile'
+    { name: 'Edit Profile', url: '/editprofile'}
 ]
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -35,12 +41,14 @@ const ProfileDropdown = () => {
                 {dropdown.map((item) => (
                     <Menu.Item>
                     {({ active }) => (
-                        <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
-                        >
-                            {item}
-                        </a>
+                        <Link href={item.url}>
+                            <a
+                                href="#"
+                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-rhineCastle font-archivo')}
+                            >
+                                {item.name}
+                            </a>
+                        </Link>
                     )}
                     </Menu.Item>
                 ))}

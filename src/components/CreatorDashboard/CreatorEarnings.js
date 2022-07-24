@@ -109,7 +109,7 @@ const CreatorEarnings = () => {
                             {/* Stats first row*/}
                             <div className="flex flex-row space-x-4 justify-start">
                                 <div className="flex flex-col">
-                                    <span className="font-archivo font-normal text-[10px] text-stone-500 uppercase text-center">Tokens sold</span>
+                                    <span className="font-archivo font-normal text-[10px] text-stone-500 uppercase text-center">Tokens minted</span>
                                     <span className="font-archivo font-semibold text-base text-stone-800">{mintedAmount}</span>
                                 </div>
                                 <div className="flex flex-col items-start">

@@ -177,7 +177,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
     }
   
     async function onDecrypt(e) {
-    e.preventDefault()
+    // e.preventDefault()
 
     const client = new LitJsSdk.LitNodeClient()
     const chain = 'mumbai'
@@ -187,6 +187,8 @@ export const AddPost = ({ isOpen, closeModal }) => {
     const creatorProfile = await getCreatorProfile(creatorAccount)
     const membershipNft = String(creatorProfile[0])
     console.log("Membership NFT", membershipNft)
+
+    membershipNft = "0x627D3ba16b0e0EDFcE4493806b01F2Ee57BEBfCb"
 
         const accessControlConditions = [
             {
@@ -204,14 +206,14 @@ export const AddPost = ({ isOpen, closeModal }) => {
             }
         ]
 
-        e.preventDefault();
+        // e.preventDefault();
         console.log("DECRYPTING")
 
         if (!client.litNodeClient) {
             await client.connect()
         }
 
-        const postData = await getPost(creatorAccount, 8)
+        const postData = await getPost(creatorAccount, 2)
         const contractCid = postData[1]
         const contractKey = postData[3]
         console.log("KEY FROM CONTRACT", contractKey)
@@ -224,6 +226,8 @@ export const AddPost = ({ isOpen, closeModal }) => {
             authSig
         })
 
+        contractCid = "bafkreigfr7vsjztt6tbdqozcarpbslu2luo2k6hrtv6kwcvye4h65x6hwu"
+        contractKey = "2dcb45b613a23ee2faf7a16c5551bdefe973bf8149be66b701390b821b6cb631f641876a73c85465afed3d52853d64141314df0882523a56845d2684562dae4ab1c970769923627e72d23df51cc39b70feb8f6a1b7fa5ff46dc8131168f92289ff962723cd60dc39eda7c7de1e6d28eb67c0cdb86327861a596c3ad52842922b00000000000000209daa103adeb28693dd94194780c2581f4b31e1a78a717ec06330e685d387a659006daaae7c2089576c400e4f956b45b8"
         const URL = "https://" + contractCid + ".ipfs.dweb.link/"
         
         console.log("FETCHING BLOBB")
@@ -248,18 +252,19 @@ export const AddPost = ({ isOpen, closeModal }) => {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        id = toast.loading("Encrypting and storing files to IPFS")
-        const imgCid = await uploadToWeb3([img])
-        const newPost = {
-            title: title,
-            image: imgCid,
-            content: content
-        }
+        // id = toast.loading("Encrypting and storing files to IPFS")
+        // const imgCid = await uploadToWeb3([img])
+        // const newPost = {
+        //     title: title,
+        //     image: imgCid,
+        //     content: content
+        // }
 
-        const sampleJSON = JSON.stringify(newPost)
+        // const sampleJSON = JSON.stringify(newPost)
 
-        console.log(sampleJSON);
-        encrypt(sampleJSON)
+        // console.log(sampleJSON);
+        // encrypt(sampleJSON)
+        onDecrypt()
     }
 
     return (

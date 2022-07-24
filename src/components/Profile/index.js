@@ -8,6 +8,7 @@ import TokenCreatorView from './TokenCreatorView'
 import { useRouter } from 'next/router'
 import { useMoralis } from "react-moralis";
 import ProfilePost from './ProfilePost'
+import Feed from './Feed'
 import { contractAddress, contractAbi } from "@utils/contractDetails"
 import { useWeb3Contract, useMoralisQuery } from "react-moralis";
 import { cidUrl } from "@utils/cidWrapper"
@@ -22,9 +23,7 @@ const Profile = () => {
         return str1 === str2 ;
     }
 
-    console.log("ADDY: ", id)
     const selfProfile = strCompare(Moralis.account,id)
-    console.log("SELF?? ", selfProfile)
 
     const [cid, setCid] = useState('')
     const [profile, setProfile] = useState()
@@ -127,26 +126,9 @@ const Profile = () => {
                             esLink="https://etherscan.io"
                             osCollLink="https://opensea.io" /> */}
                     </div>
-
-
                 </div>
             </div>
-            <div className="flex flex-col space-y-2 px-[352px] py-8">
-                <ProfilePost
-                    postPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSol8wbdN8DpJ1zBICd61fpzJbk2KA7eBIqw&usqp=CAU"
-                    postTitle="This is the title"
-                    postContent="This is the content"
-                    postDate="May 5, 2022"
-                    uProfPic="https://img.okezone.com/content/2022/01/14/54/2532215/raup-miliaran-rupiah-dari-foto-selfie-di-nft-ghozali-buat-bantu-ibu-bayar-utang-mTcTgjWvm5.jpg"
-                />
-                <ProfilePost
-                    postPic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSol8wbdN8DpJ1zBICd61fpzJbk2KA7eBIqw&usqp=CAU"
-                    postTitle="This is the title"
-                    postContent="This is the content"
-                    postDate="May 5, 2022"
-                    uProfPic="https://img.okezone.com/content/2022/01/14/54/2532215/raup-miliaran-rupiah-dari-foto-selfie-di-nft-ghozali-buat-bantu-ibu-bayar-utang-mTcTgjWvm5.jpg"
-                />
-            </div>
+            <Feed/>
 
         </div>
 

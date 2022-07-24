@@ -7,6 +7,9 @@ import { useMoralis, useWeb3Contract } from "react-moralis";
 import { contractAddress, contractAbi } from "@utils/contractDetails"
 import { cidUrl } from "@utils/cidWrapper"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const CreatorDashboard = () => {
   const { Moralis } = useMoralis();
   const [cid, setCid] = useState('')
@@ -91,6 +94,17 @@ const CreatorDashboard = () => {
           {/* CreatorEarnings will fetch props */}
         </div>
       </div>
+      <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+      />
     </div>
   )
 }

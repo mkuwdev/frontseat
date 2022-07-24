@@ -379,7 +379,7 @@ export const AddPost = ({ isOpen, closeModal }) => {
                         </div>
                     </div>
                 </div>
-
+                
             </Dialog>
         </Transition>
     );
