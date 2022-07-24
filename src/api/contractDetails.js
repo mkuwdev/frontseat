@@ -1,5 +1,5 @@
 // Mumbai Testnet, deployer: 0xb3546A67E800a8bCd6Fb7872BE18FDE2CE16473c
-export const contractAddress = "0x8B2f1fb29A55D48EC240351af62Cc03cbdcF5BB9"
+export const contractAddress = "0x6fAfc94F2eE8f07b07ddc642CBd7c5E78b97C609"
 export const contractChainId = "80001"
 
 export const contractAbi = [
